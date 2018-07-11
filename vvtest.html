@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>registration form</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+
+</head>
+
+<body>
+<div class="rf">
+    <form class="register-form" method="post" action="" onsubmit=" return Validate()" name="vform">
+        <h2>Signup Form</h2>
+        <input type="text" name="fname"  id="textfield1" placeholder="First Name"><br>
+        <div id="fname_error" class="val_error"></div>
+
+        <input type="text" name="lname"  id="textfield2" placeholder="Last Name"><br>
+        <div id="lname_error" class="val_error"></div>
+
+        <input type="email" name="email" id="textfield3" placeholder="Enter Email"><br>
+        <div id="email_error" class="val_error"></div>
+
+        <input type="type" name="mnumber" id="textfield4" placeholder="Mobile Number"><br>
+        <div id="mnumber_error" class="val_error"></div>
+
+        <input type="password" name="password" id="textfield5"placeholder="Enter Password"><br>
+        <div id="password_error" class="val_error"></div>
+
+        <input type="password" name="cpassword" id="textfield6" placeholder="Enter confirm password"><br><br>
+        <div id="cpassword_error" class="val_error"></div>
+
+        <span> Date Of Birth :</span><br>
+         
+        <!-- <select name="DoBmonth" id="lm" onchange="getval1();"> -->
+            <select name="DoBmonth">
+            <option value="-1" selected>Month</option>
+            <option value="1">January</option>
+            <option value="2">February</option>
+            <option value="3">March</option>
+            <option value="4">April</option>
+            <option value="5">May</option>
+            <option value="6">June</option>
+            <option value="7">July</option>
+            <option value="8">August</option>
+            <option value="9">September</option>
+            <option value="10">Octomber</option>
+            <option value="11">November</option>
+            <option value="12">December</option>
+        </select>
+        
+        <!-- <select name="DoBDay" id="ld" onchange="getval2()"> -->
+            <select name="DoBDay">
+            <option value="-1" selected>Day</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+
+        </select>
+    <!-- <select name="DoBYear" id="ly" onchange="getval3()">     -->
+        <select name="DoBYear">
+            <option value="-1" >Year</option>
+            <option value="1990">1990</option>
+            <option value="1991">1991</option>
+            <option value="1992">1992</option>
+            <option value="1993">1993</option>
+            <option value="1994">1994</option>
+        </select><br><br>
+        Gender:
+        <!-- 
+              <input type="radio" name="type1"  onclick="gender();" value="male">Male
+        <input type="radio" name="type1" onclick="gender();" value="female">Female<br> -->
+        <input type="radio" name="gender" value="male">Male
+        <input type="radio" name="gender" value="female">Female<br>
+        <div id="rad_error" class="val_error"></div>
+        <input type="checkbox" name="chek" value="checked">I agree to the TC of Usage.<br><br>
+        <div id="chk_error" class="val_error"></div>
+        <input type="submit"  name="register" value="Register">
+         <!-- <input type="submit"  name="register" value="Register" onclick="showdata()" > -->
+        <!--<p class="message">Already registered? <a href="#">LogIn</a></p>-->
+
+    </form>
+</div>
+
+
+<!--<script src="app.js" type="text/javascript">
+
+</script>-->
+<script>
+
+    function Validate() {
+
+/*        var firstName,lastName,email,mobileno,DoB,Gender,success, fName,lName,eMail,mobileNo;
+*/
+        if (document.vform.fname.value == ""){
+            document.vform.fname.focus();
+            document.getElementById("fname_error").innerHTML ="Pleae provide your First Name";
+            return false;
+        }
+        if (document.vform.lname.value == ""){
+            document.vform.lname.focus();
+            document.getElementById("lname_error").innerHTML ="Pleae provide your Last Name";
+            return false;
+        }
+        if (document.vform.email.value == ""){
+            document.vform.email.focus();
+            document.getElementById("email_error").innerHTML ="Pleae provide your Email";
+            return false;
+        }
+
+       if (document.vform.mnumber.value == "" ){
+           document.vform.mnumber.focus();
+          // alert("please Enter Mobile Number");
+           document.getElementById("mnumber_error").innerHTML = "Please Provide the Mobile Number"
+            return false;
+        }
+        if (document.vform.password.value == ""){
+            document.vform.password.focus();
+            document.getElementById("password_error").innerHTML ="Pleae Enter your Password";
+            return false;
+        }
+        if (document.vform.cpassword.value == ""){
+            document.vform.cpassword.focus();
+            document.getElementById("cpassword_error").innerHTML ="Pleae Confirm your Password";
+            return false;
+        }
+        if (document.vform.password.value !== document.vform.cpassword.value){
+            document.vform.password.focus();
+            document.getElementById("cpassword_error").innerHTML ="Pleae Password donot match";
+            return false;
+        }
+        if (document.vform.DoBmonth.value == "-1"){
+
+            document.vform.DoBmonth.focus();
+            document.getElementById("cpassword_error").innerHTML ="Pleae Give Month";
+            return false;
+        }
+        if (document.vform.DoBDay.value == "-1"){
+            document.vform.DoBDay.focus();
+            document.getElementById("cpassword_error").innerHTML ="Pleae Give Day";
+            return false;
+        }
+        if (document.vform.DoBYear.value == "-1"){
+            document.vform.DoBYear.focus();
+            document.getElementById("cpassword_error").innerHTML ="Pleae Give Year";
+            return false;
+        }
+
+        if ((document.vform.gender[0].checked == false )&&(document.vform.gender[0].checked == false)){
+            document.vform.gender[0].focus()
+            document.getElementById("rad_error").innerHTML = "Pleae choose your Gender" ;
+            return false;
+        }
+
+        if (document.vform.chek.checked == false){
+            document.vform.chek.focus();
+           document.getElementById("chk_error").innerHTML ="Pleae  Agree ";
+            return false;
+        }
+          
+    alert("Form is submitted successfully");
+    /*    firstName = document.getElementById("textfield1").value;
+        lastName = document.getElementById("textfield2").value;
+        email=  document.getElementById("textfield3").value;
+        mobileno = document.getElementById("textfield4").value;
+
+        localStorage.setItem("fName",firstName);
+        localStorage.setItem("lName",lastName);
+        localStorage.setItem("eMail",email);
+        localStorage.setItem("mobileNo",mobileno);
+    */
+
+     }
+  /*    function showdata(){
+        var firstName = document.vform.textfield1.value;
+        localStorage.setItem("firstName" ,firstName);
+        var lastName = document.vform.textfield2.value;
+        localStorage.setItem("lastName" ,lastName);
+        var email = document.vform.textfield3.value;
+        localStorage.setItem("email",email);
+        var mobileno = document.vform.textfield4.value;
+        localStorage.setItem("mobileno",mobileno);
+        var password = document.vform.textfield5.value;
+        localStorage.setItem("password",password);
+        var password1 = document.vform.textfield6.value;
+        localStorage.setItem("password1",password1);
+        
+       /* var em = document.getElementById("month");
+        var Month = em.option[em.selectedIndex].value;
+        console.log(Month);
+        localStorage.setItem("Month",Month);
+        var day = document.vform.DoBDay.value;
+        localStorage.setItem("day",day);
+        var year = document.vform.DoBYear.value;
+        localStorage.setItem("year",year);
+        */
+         //return false;
+
+         //var selectedvalue = document.getElementById("lm").value;
+        // alert(selectedvalue);
+         //console.log(selectedvalue);
+         //var selected = document.h
+    
+
+/*
+    function getval1(){
+        var month = document.getElementById("lm").value;
+         alert(month);
+         console.log(month);
+
+         localStorage.setItem("month",month );
+
+    }
+    function getval2(){
+        var day= document.getElementById("ld").value;
+         alert(day);
+         console.log(day);
+
+         localStorage.setItem("day",day );
+
+    }
+    function getval3(){
+        var year = document.getElementById("ly").value;
+         alert(year);
+         console.log(year);
+         localStorage.setItem("year",year );
+
+    }
+    
+    function gender() {
+        var gender = document.vform.radio.value;
+        if (gender[1].checked){
+                var val = gender[1].value;
+                console.log(val);
+        }else{
+            var val = gender[0].value;
+            localStorage.setItem("gender",val);
+            console.log(val);
+        }
+    }
+*/      
+/*
+      function storedata() {
+            var firstName,lastName,email,mobileNo,Dob,gender;
+        if( conditon to store data when submit is success ){
+            firstName = document.getElementById("textfield1").value;
+            lastName = document.getElementById("textfield2").value ;
+            email = document.getElementById("textfield3").value;
+            mobileNo =  document.getElementById("textfield3").value;
+         // check this detaile properly to get values or not using console log
+         // 
+        var DoB = document.getElementBy("name").value;
+        var gender = document.getElementById("gender").value;
+        }
+        var person = {
+            fName : firstName,
+            lName: lastName,
+            eMail:email, 
+            mNo:mobileNo,
+            birth:DoB, 
+            Gender:gender
+        };
+
+        var pRecords = [];
+            pRecords.push(person);
+
+            localStorage.setItem('items', JSON.stringify(pRecords)); //i am not sure about this
+               
+        }*/
+  
+  /*            
+       window.reload();
+        function load(){
+             
+             var data = JSON.parse(localStorage.getItem('items'));
+            var firstName = data.fName;
+            var lastName = data.lName;
+            var eMail = data.eMail;
+            var mobileno = data.mNo
+            var password = data.password;
+            var password1 = data.password1;
+            var birth = data.DoB;
+            var gender = data.gender;
+    
+               document.getElementById("fName").innerHTML = firstName;
+               document.getElementById("lName").innerHTML = lasstName;
+               document.getElementById("eMail").innerHTML = eMail;
+               document.getElementById("mNo").innerHTML =  mobileno;
+               document.getElementById("password").innerHTML =  password;
+                document.getElementById("password1").innerHTML =  password1;
+                // divide code to every field like date , month, year
+               document.getElementById("dob").innerHTML = birth;
+               // write code to select filed gender . 
+               
+               document.getElementById("gender").innerHTML = gender;
+               // write code to select check box.
+               document.getElementById("checkbox").innerHTML = checkbox
+
+
+        }
+        */
+        /*
+          function resubmit(){
+               firstName = document.getElementById("fName").innerHTML ;
+               lasstName = document.getElementById("lName").innerHTML ;
+                eMail = document.getElementById("eMail").innerHTML
+               mobileno =document.getElementById("mNo").innerHTML =  
+                password = document.getElementById("password").innerHTML = 
+                password1 = document.getElementById("password1").innerHTML 
+                // get code to every field like date , month, year
+                birth=document.getElementById("dob").innerHTML;
+               // write code to select filed gender . 
+               
+               gender =document.getElementById("gender").innerHTML = 
+               // write code to select check box.
+               checkbox = document.getElementById("checkbox").innerHTML 
+
+          }
+    */
+</script>
+
+
+</body>
+</html>

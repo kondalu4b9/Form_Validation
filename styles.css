@@ -1,0 +1,103 @@
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+body {
+    background: lavender;
+    color: white;
+    font-size: 20px;
+}
+
+.rf {
+    width: 400px;
+    margin: auto;
+    background: lightblue;
+    padding: 15px;
+    margin-top: 20px;
+}
+
+form {
+    padding: 10px;
+    font-family: monospace;
+    border: 1px dashed white;
+}
+
+form h2 {
+    text-align: center;
+    background: orange;
+    color: white;
+    padding: 10px;
+    border-radius: 10px;
+    width: 65%;
+    margin: auto;
+
+}
+
+input {
+    padding: 10px;
+    margin: 5px;
+    border-radius: 5px;
+    border: none;
+    margin-top: 10px;
+
+}
+
+input[type=text],
+input[type=email],
+input[type=number],
+input[type=password] {
+    width: 85%;
+
+}
+
+input[type=submit] {
+    width: 60%;
+    background: orange;
+    color: white;
+    font-size: 16px;
+    margin-left: 18%;
+}
+
+input[type=submit]:hover {
+    background: blue;
+}
+
+select {
+    width: 26%;
+    padding: 6px;
+    margin-left: 6px;
+
+}
+
+a {
+    text-decoration: none;
+}
+
+button:hover {
+    background: blue;
+}
+
+button {
+    width: 60%;
+    background: orange;
+    color: white;
+    font-size: 16px;
+    margin-left: 18%;
+    height: 38px;
+}
+
+
+.message {
+    margin: 15px 0 0;
+    color: aliceblue;
+}
+
+h1 {
+    color: green;
+    margin: 10%;
+    font-size: 150px;
+}
+.val_error {
+    color: red;
+}
