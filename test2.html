@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Form Validation</title>
+	<style type="text/css">
+	      body {
+	      	margin: 0;
+	      	padding:0;
+	      }
+	      header {
+	      	font-size: 30px;
+	      }
+		header, footer {
+			background-color: grey;
+			width: 100%
+			height: 40px;
+			padding: 30px;
+			text-align: center;
+			
+		}
+		footer{
+			font-size: 20px;
+		}
+		ul {
+			list-style-type: none;
+			margin: 0;
+			padding: 0;
+			overflow: hidden;
+			background-color: tomato;
+		}
+		li {
+			float: left;
+		}
+		li a {
+			display: block;
+			padding: 15px;
+			text-decoration: none;
+			color: white;
+		}
+		form {
+			background-color: gray;
+			width: 350px;
+			height: 350px;
+			border-radius: 5px;
+			margin:auto;
+			margin-top: 10px;
+			margin-bottom: 20px;
+		}
+		#result{
+			border:1px solid black;
+			width: 300px;
+			height: 160px;
+			margin: auto;
+		}
+	</style>
+</head>
+<body>
+	<header>Form validation</header>
+	<ul>
+		<li><a href="#home">Home</a></li>
+		<li><a href="#dit">Edit</a></li>
+		<li><a href="#result">Result</a></li>
+		<li><a href="#contact">Contact</a></li>
+		<li><a href="#help">Help</a></li>
+	</ul>
+	<div id="demo"></div>
+	
+	<form name="form1" method="post">
+		<label>First Name<sup>*</sup>:</label>
+		<input type="text" name="fname1"  id="fname" onClick="this.value=''"required><br><br>
+		<label>Last Name<sup>*</sup>:</label>
+		<input type="text" name="lname1" id="lname"   onClick="this.value=''" required><br><br>
+		<label>Mobile No<sup>*</sup>:</label>
+		<input type="text" name="mobileNo"  id="mobileNo"  required onClick="this.value=''"><br><br>
+		<label>Email<sup>*</sup>:</label>
+		<input type="email" name="eMail" id="eMail"required onClick="this.value=''"><br><br>
+		<label>Password<sup>*</sup>:</label>
+		<input type="text" name="passwd" id="passwd" required onClick="this.value=''"><br><br>
+		<label>confirm Password<sup>*</sup>:</label>
+		<input type="text" name="confirmpasswd"   id="confirmpasswd" required onClick="this.value=''"><br>
+		 <label>Date of Birth <sup>*</sup>:</label>
+		<input type="date" name="Birth" id="dOb" required><br>
+		<label>Gender</label>
+		<input type="radio" name="gender" value="male"checked id="male">Male<input type="radio" value="female"name="gender" id="female">Female<input type="radio" name="gender" value="other" id="other">Other
+		<br>
+		<label>Are you giving correct information?</label>
+		<input type="checkbox" name="checkbox1" value="yes" required id="checkbox"><br>
+		<input type="submit" value="Submit" onClick="f1();">
+		<!-- <input type="button" value="Edit" onClick="edit();"> -->
+	</form>
+	<div id="result">
+	<div id="demo1">Result Here</div>
+	<div id="demo2"></div>
+	<div id="demo3"></div>
+	<div id="demo4"></div>
+	<div id="demo5"></div>
+	<div id="demo6"></div>
+	<div id="demo7"></div>
+	<div id="demo8"></div>
+	<div id="demo9"></div>
+	</div>
+
+	<footer>&copy;kondalu</footer>
+	<script type="text/javascript">
+		var firstname,lastname,mobileNo,eMail,Password,confirmpasswd,dOb,gender, checkBox ,radios,i,person1;
+		var person = { };
+		var rperson = [];
+;
+          
+          function f1() {
+           
+              firstname = document.getElementById('fname');
+             lastname = document.getElementById('lname');
+             mobileNo = document.getElementById('mobileNo');
+            eMail = document.getElementById('eMail').value;
+             Password = document.getElementById('passwd').value;
+             confirmpasswd = document.getElementById('confirmpasswd').value;
+             dOb=document.getElementById("dOb").value;
+
+              // var person = {};
+               // var rperson = [];
+
+
+             radios = document.getElementsByName('gender');
+             for(  i = 0; length = radios.length;i++ ){
+             	if (radios[i].checked) {
+                   gender = radios[i].value;
+                  break;  
+             	}
+                       
+             }
+             checkBox = document.getElementById("checkbox").value;
+   
+              person.firstname = firstname.value;
+              person.lastname = lastname.value;
+              person.mobileNo = mobileNo.value;
+              person.eMail = eMail;
+              person.Password = Password;
+              person.confirmpasswd = confirmpasswd;
+              person.dOb = dOb.toString();
+              person.gender = gender; 
+              person.checkbox = checkBox;       
+                      
+				rperson.push(person);              
+
+              rperson = JSON.stringify(rperson);
+
+             // rperson.push(person);
+
+             localStorage.setItem("rperson",rperson);
+
+              rperson.push(person);
+             alert("Form is submitted successfully");       
+            }
+
+             person1 = JSON.parse(localStorage.getItem('rperson')); 
+         document.getElementById('demo1').innerHTML = person1[0].firstname;
+        document.getElementById('demo2').innerHTML = person1[0].lastname;
+        document.getElementById('demo3').innerHTML = person1[0].mobileNo;
+        document.getElementById('demo4').innerHTML = person1[0].eMail;
+        document.getElementById('demo5').innerHTML = person1[0].Password;
+        document.getElementById('demo6').innerHTML = person1[0].confirmpasswd;
+        document.getElementById('demo7').innerHTML = person1[0].dOb;
+        document.getElementById('demo8').innerHTML = person1[0].gender;
+        document.getElementById('demo9').innerHTML = person1[0].checkbox;
+                
+ 	</script>
+
+</body>
+</html>
